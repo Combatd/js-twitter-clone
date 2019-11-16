@@ -3,6 +3,10 @@ const app = express();
 const mongoose = require('mongoose');
 const db = require("./confg/keys").mongoURI; 
 
+// controllers
+const usersController = require('./controllers/api/users');
+const tweetsController = require('./controllers/api/tweets');
+
 
 mongoose
     .connect(db, { useNewUrlParser: true })
@@ -13,6 +17,10 @@ mongoose
 app.get('/', (req, res) => {
     res.send('home route nodemon')
 });
+
+// url prefixes
+app.use('/api/users', usersController);
+app.use('/api/tweets', tweetsController);
 
 const PORT = process.env.PORT || 5000;
 
