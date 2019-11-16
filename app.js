@@ -2,6 +2,12 @@ const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
 const db = require("./confg/keys").mongoURI; 
+const bodyParser = require('body-parser');
+
+
+// middleware
+app.use(bodyParser.urlencoded({ extended: true }));
+
 
 // controllers
 const usersController = require('./controllers/api/users');
