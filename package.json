@@ -4,6 +4,8 @@
   "description": "Full-Stack JavaScript Twitter clone with MongoDB, Express.js, React.js, and Node.js",
   "main": "app.js",
   "scripts": {
+    "server": "nodemon app.js",
+    "start": "node app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
