@@ -62,3 +62,6 @@ typings/
 
 # mac configuration files
 .DS_Store
+
+# mongodb atlas database keys
+keys.js
