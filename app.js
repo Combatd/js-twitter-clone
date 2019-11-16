@@ -11,7 +11,6 @@ mongoose
 
 
 app.get('/', (req, res) => {
-    console.log(res);
     res.send('home route nodemon')
 });
 
