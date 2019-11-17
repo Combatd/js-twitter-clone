@@ -11,7 +11,11 @@ const validateRegisterInput = require('../../validation/register');
 const validateLoginInput = require('../../validation/login');
 
 router.post("/register", (req, res) => {
+    const { errors, isValid } = validateRegisterInput(req.body);
 
+    if (!isValid) {
+        return res.status(400).json(errors);
+    }
 
     User.findOne({ handle: req.body.handle }).then(user => {
         if (user) {
@@ -50,13 +54,18 @@ router.post("/register", (req, res) => {
 
 
 router.post("/login", (req, res) => {
+    const { errors, isValid } = validateLoginInput(req.body);
+
+    if (!isValid) {
+        return res.status(400).json(errors);
+    }
 
     const handle = req.body.handle;
     const password = req.body.password;
 
     User.findOne({ handle }).then(user => {
         if (!user) {
-            return res.status(400).json({ handle: "Incorrect Handle or Password"});
+            return res.status(400).json(errors);
         }
 
         bcrypt.compare(password, user.password).then(isMatch => {
@@ -71,7 +80,7 @@ router.post("/login", (req, res) => {
                 });
             } else {
 
-                return res.status(400).json({ password: "Incorrect Handle or Password"});
+                return res.status(400).json(errors);
             }
         });
     });
