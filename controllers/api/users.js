@@ -7,8 +7,10 @@ const passport = require('passport');
 
 const User = require('../../models/User');
 
+const validateRegisterInput = require('../../validation/register');
+const validateLoginInput = require('../../validation/login');
+
 router.post("/register", (req, res) => {
-  
 
 
     User.findOne({ handle: req.body.handle }).then(user => {
