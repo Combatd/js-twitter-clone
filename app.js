@@ -3,12 +3,16 @@ const app = express();
 const mongoose = require('mongoose');
 const db = require("./confg/keys").mongoURI; 
 const bodyParser = require('body-parser');
+const passport = require('passport');
 
 
 // middleware
 app.use(bodyParser.urlencoded({ extended: false }));
 
 app.use(bodyParser.json());
+
+app.use(passport.initialize());
+require('./confg/passport')(passport);
 
 
 // controllers
