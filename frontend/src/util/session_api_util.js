@@ -2,8 +2,10 @@ import axios from 'axios';
 
 export const setAuthToken = token => {
     if (token) {
+        // set the token to our default authorization header
         axios.defaults.headers.common['Authorization'] = token;
     } else {
+        // else delete everything on Authorization key
         delete axios.defaults.headers.common['Authorization'];
     }
 };
