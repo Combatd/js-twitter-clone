@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 // We will create this component shortly
-import Root from './components/root';
+import Root from './components/Root';
 
 // We set this up in the last section
 import configureStore from './store/store';
